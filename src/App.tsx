@@ -392,7 +392,7 @@ export default function App() {
         )}
       </main>
 
-      {/* Subtle Footer with clean unboxed metadata */}
+      {/* Subtle Footer with clean unboxed metadata 
       <footer className="py-5 px-4 text-center border-t border-stone-200/60 bg-stone-100/50 text-xs text-stone-500">
         <div className="max-w-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>Finding a Church – What Matters to You?</span>
@@ -408,7 +408,7 @@ export default function App() {
             </button>
           </div>
         </div>
-      </footer>
+      </footer>*/}
 
       {/* Modals */}
       <GoogleSheetsModal
