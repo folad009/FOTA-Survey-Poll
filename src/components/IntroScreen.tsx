@@ -17,9 +17,9 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
     <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12">
       {/* Editorial Headline */}
       <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 text-xs font-semibold text-amber-800 uppercase tracking-widest mb-3">
-          <Compass className="w-4 h-4 text-amber-700" />
-          <span>Community Discovery Survey</span>
+        <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-800 uppercase tracking-widest mb-3">
+          
+          <img src="/images/fota-logo.png" alt="FOTA Church" width={150} height={150} />
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-900 tracking-tight leading-tight text-balance mb-4">
@@ -30,25 +30,25 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
           {SURVEY_METADATA.description}
         </p>
 
-        {/* Unboxed Metadata with Typographic Separator */}
+        {/* Unboxed Metadata with Typographic Separator 
         <div className="flex items-center justify-center gap-2.5 text-xs sm:text-sm text-stone-500 mt-4">
           <span className="flex items-center gap-1.5 font-medium text-stone-700">
-            <Clock className="w-3.5 h-3.5 text-amber-600" />
+            <Clock className="w-3.5 h-3.5 text-blue-600" />
             Estimated time: {SURVEY_METADATA.estimatedTime}
           </span>
           <span aria-hidden="true" className="text-stone-300">·</span>
           <span>7 Questions</span>
           <span aria-hidden="true" className="text-stone-300">·</span>
           <span>Mobile-Friendly</span>
-        </div>
+        </div>*/}
       </div>
 
       {/* Value Pillars */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
         <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
-          <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center mb-2.5">
+          {/*<div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center mb-2.5">
             <HeartHandshake className="w-4 h-4" />
-          </div>
+          </div>*/}
           <h2 className="text-sm font-semibold text-stone-900 mb-1">Your Voice Truly Matters</h2>
           <p className="text-xs text-stone-600 leading-relaxed">
             Whether you attend weekly, are searching for a new church, or haven't stepped inside a church in years, your honest expectations guide how we welcome visitors.
@@ -56,9 +56,9 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
         </div>
 
         <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
-          <div className="w-8 h-8 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center mb-2.5">
+          {/*<div className="w-8 h-8 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center mb-2.5">
             <ShieldCheck className="w-4 h-4" />
-          </div>
+          </div>*/}
           <h2 className="text-sm font-semibold text-stone-900 mb-1">Respected & Secure</h2>
           <p className="text-xs text-stone-600 leading-relaxed">
             All responses are handled with high privacy and stored directly in the church Google Sheets records. Marketing communications are entirely optional.
@@ -81,7 +81,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
         <button
           type="button"
           onClick={onStart}
-          className="w-full sm:w-auto h-12 px-8 rounded-xl bg-amber-700 hover:bg-amber-800 text-white font-medium text-sm shadow-md shadow-amber-900/10 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto h-12 px-8 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-medium text-sm shadow-md shadow-blue-900/10 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
         >
           <span>{hasSavedData ? 'Start New Survey' : 'Begin Survey'}</span>
           <ArrowRight className="w-4 h-4" />

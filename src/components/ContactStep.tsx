@@ -131,7 +131,7 @@ export const ContactStep: React.FC<ContactStepProps> = ({
               value={contact.phoneNumber}
               onChange={(e) => onChange({ phoneNumber: e.target.value })}
               onBlur={() => setTouched(prev => ({ ...prev, phoneNumber: true }))}
-              placeholder="e.g. +1 555-234-5678 or 07123 456789"
+              placeholder="e.g. +234 803 123 4567"
               className={`w-full h-12 pl-10 pr-4 text-sm rounded-xl border bg-white text-stone-900 placeholder:text-stone-400 focus:outline-none transition-colors ${
                 touched.phoneNumber && !isPhoneValid
                   ? 'border-red-400 focus:border-red-500 focus:ring-2 focus:ring-red-100'
@@ -174,7 +174,7 @@ export const ContactStep: React.FC<ContactStepProps> = ({
                 I agree to receive relevant communication from the church.
               </span>
               <p className="text-stone-500 mt-0.5">
-                (Optional) You can participate without agreeing to church communications.
+                (Optional) You can participate without agreeing to FOTA Church.
               </p>
             </div>
           </label>

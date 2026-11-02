@@ -36,7 +36,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
         </p>
       </div>
 
-      {/* Confirmation Receipt Box */}
+      {/* Confirmation Receipt Box 
       <div className="p-5 rounded-2xl bg-white border border-stone-200/90 shadow-xs mb-8 space-y-3.5">
         <div className="flex items-center justify-between pb-3 border-b border-stone-100">
           <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
@@ -71,7 +71,7 @@ export const SuccessScreen: React.FC<SuccessScreenProps> = ({
           <span>Destination: Responses Google Sheet</span>
           <span className="text-emerald-700 font-medium">Synced</span>
         </div>
-      </div>
+      </div>*/}
 
       {/* Warm Note */}
       <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200/60 mb-8 flex items-start gap-3">

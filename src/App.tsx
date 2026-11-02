@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
+// import { Navbar } from './components/Navbar';
 import { ProgressBar } from './components/ProgressBar';
 import { IntroScreen } from './components/IntroScreen';
 import { ContactStep } from './components/ContactStep';
@@ -203,13 +203,13 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-stone-50 flex flex-col text-stone-900">
-      {/* Top Bar following Top Bar Contract */}
+      {/* Top Bar following Top Bar Contract 
       <Navbar
         onOpenSettings={() => setIsSheetsModalOpen(true)}
         onOpenAbout={() => setIsAboutModalOpen(true)}
         onReset={handleResetSurvey}
         showReset={currentStep !== 'intro' && currentStep !== 'success'}
-      />
+      />*/}
 
       {/* Progress Bar Indicator */}
       <ProgressBar
