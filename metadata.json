@@ -1,6 +1,6 @@
 {
-  "name": "Church Discovery Survey",
-  "description": "Finding a Church – What Matters to You? A welcoming, mobile-first survey capturing church visitor expectations and journey insights.",
+  "name": "Church Discovery Poll",
+  "description": "Finding a Church – What Matters to You? A one-minute anonymous poll on what matters most when choosing a church.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

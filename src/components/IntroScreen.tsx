@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Clock, ShieldCheck, HeartHandshake, Compass } from 'lucide-react';
+import { ArrowRight, Clock } from 'lucide-react';
 import { SURVEY_METADATA } from '../data/surveyQuestions';
 
 interface IntroScreenProps {
@@ -11,14 +11,12 @@ interface IntroScreenProps {
 export const IntroScreen: React.FC<IntroScreenProps> = ({
   onStart,
   hasSavedData,
-  onResume
+  onResume,
 }) => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12">
-      {/* Editorial Headline */}
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-800 uppercase tracking-widest mb-3">
-          
           <img src="/images/fota-logo.png" alt="FOTA Church" width={150} height={150} />
         </div>
 
@@ -30,43 +28,34 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
           {SURVEY_METADATA.description}
         </p>
 
-        {/* Unboxed Metadata with Typographic Separator 
         <div className="flex items-center justify-center gap-2.5 text-xs sm:text-sm text-stone-500 mt-4">
           <span className="flex items-center gap-1.5 font-medium text-stone-700">
             <Clock className="w-3.5 h-3.5 text-blue-600" />
-            Estimated time: {SURVEY_METADATA.estimatedTime}
+            {SURVEY_METADATA.estimatedTime}
           </span>
           <span aria-hidden="true" className="text-stone-300">·</span>
-          <span>7 Questions</span>
+          <span>1 question</span>
           <span aria-hidden="true" className="text-stone-300">·</span>
-          <span>Mobile-Friendly</span>
-        </div>*/}
+          <span>Anonymous</span>
+        </div>
       </div>
 
-      {/* Value Pillars */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mb-8">
         <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
-          {/*<div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center mb-2.5">
-            <HeartHandshake className="w-4 h-4" />
-          </div>*/}
           <h2 className="text-sm font-semibold text-stone-900 mb-1">Your Voice Truly Matters</h2>
           <p className="text-xs text-stone-600 leading-relaxed">
-            Whether you attend weekly, are searching for a new church, or haven't stepped inside a church in years, your honest expectations guide how we welcome visitors.
+            One tap tells us what people look for most when choosing a church—and how we can welcome them better.
           </p>
         </div>
 
         <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
-          {/*<div className="w-8 h-8 rounded-lg bg-stone-100 text-stone-700 flex items-center justify-center mb-2.5">
-            <ShieldCheck className="w-4 h-4" />
-          </div>*/}
-          <h2 className="text-sm font-semibold text-stone-900 mb-1">Respected & Secure</h2>
+          <h2 className="text-sm font-semibold text-stone-900 mb-1">Fast & Private</h2>
           <p className="text-xs text-stone-600 leading-relaxed">
-            All responses are handled with high privacy and stored directly in the church Google Sheets records. Marketing communications are entirely optional.
+            No contact form required. Your answer is recorded securely in the church Google Sheet.
           </p>
         </div>
       </div>
 
-      {/* Action Zone */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         {hasSavedData && (
           <button
@@ -74,16 +63,16 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
             onClick={onResume}
             className="w-full sm:w-auto h-12 px-6 rounded-xl border border-stone-300 bg-white text-stone-800 font-medium text-sm hover:bg-stone-50 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
           >
-            <span>Resume Where You Left Off</span>
+            <span>Resume Poll</span>
           </button>
         )}
 
         <button
           type="button"
           onClick={onStart}
-            className="w-full sm:w-auto h-12 px-8 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-medium text-sm shadow-md shadow-blue-900/10 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+          className="w-full sm:w-auto h-12 px-8 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-medium text-sm shadow-md shadow-blue-900/10 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
         >
-          <span>{hasSavedData ? 'Start New Survey' : 'Begin Survey'}</span>
+          <span>{hasSavedData ? 'Start Fresh' : 'Answer in 1 Minute'}</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>

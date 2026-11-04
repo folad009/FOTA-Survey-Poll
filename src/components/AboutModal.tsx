@@ -49,21 +49,21 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
             </div>
             <div className="flex items-center gap-2">
               <Compass className="w-4 h-4 text-amber-600 shrink-0" />
-              <span>7 Focused Questions</span>
+              <span>1 Quick Question</span>
             </div>
           </div>
 
           <div>
             <h4 className="font-semibold text-stone-900 mb-1">Why your perspective counts:</h4>
             <p>
-              Walking into a church for the first time or looking for a faith community can feel daunting. By learning what makes visitors comfortable and what helps individuals thrive long-term, leadership and welcoming teams can foster a genuinely hospitable culture.
+              A single tap tells us what people look for most when choosing a church—so welcoming teams can focus on what truly matters.
             </p>
           </div>
 
           <div className="p-3 rounded-xl bg-amber-50/60 border border-amber-200/60 text-amber-900 flex items-start gap-2.5">
             <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
             <p className="text-[11px] leading-relaxed">
-              Your contact details are strictly handled with respect. Marketing or follow-up communication consent is completely optional.
+              This poll is anonymous by default. No contact form is required to submit your answer.
             </p>
           </div>
         </div>

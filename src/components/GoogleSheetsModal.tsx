@@ -42,16 +42,10 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
     if (localSubmissions.length === 0) return;
     const headers = [
       "Submission Date",
+      "What Matters Most",
       "Full Name",
       "Email",
       "Phone Number",
-      "Church Journey",
-      "Discovery Channel",
-      "Top 3 Church Expectations",
-      "First Visit Expectations",
-      "Reasons to Stay",
-      "Preferred Communication",
-      "Suggestions / Feedback",
       "Contact Consent"
     ];
 
@@ -59,16 +53,10 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
 
     const rows = localSubmissions.map(s => [
       escapeCsv(s.submissionDate),
+      escapeCsv(s.whatMattersMost),
       escapeCsv(s.fullName),
       escapeCsv(s.email),
       escapeCsv(s.phoneNumber),
-      escapeCsv(s.churchJourney),
-      escapeCsv(s.discoveryChannel),
-      escapeCsv(s.top3Expectations),
-      escapeCsv(s.firstVisitExpectations),
-      escapeCsv(s.reasonsToStay),
-      escapeCsv(s.preferredCommunication),
-      escapeCsv(s.suggestionsFeedback),
       escapeCsv(s.contactConsent)
     ].join(','));
 
@@ -76,7 +64,7 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", `church_survey_responses_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute("download", `church_poll_responses_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -157,7 +145,7 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
           {activeTab === 'endpoint' && (
             <div className="space-y-4">
               <p className="text-stone-600 leading-relaxed">
-                Survey responses are dispatched directly to your Google Sheet’s “Responses” tab via Google Apps Script. 
+                Poll responses are dispatched directly to your Google Sheet’s “Responses” tab via Google Apps Script.
                 Configure your Web App execution URL below:
               </p>
 
@@ -206,24 +194,17 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
                 )}
               </form>
 
-              {/* 12 Fields Reference */}
               <div className="pt-2">
                 <span className="font-semibold text-stone-700 uppercase tracking-wider text-[11px] block mb-2">
-                  Mapped Fields in Responses Sheet (12 Columns):
+                  Mapped Fields in Responses Sheet (6 Columns):
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 p-3 rounded-xl bg-stone-50 border border-stone-200 text-[11px] font-mono text-stone-700">
                   <div>1. Submission Date</div>
-                  <div>2. Full Name</div>
-                  <div>3. Email</div>
-                  <div>4. Phone Number</div>
-                  <div>5. Church Journey</div>
-                  <div>6. Discovery Channel</div>
-                  <div>7. Top 3 Church Expectations</div>
-                  <div>8. First Visit Expectations</div>
-                  <div>9. Reasons to Stay</div>
-                  <div>10. Preferred Communication</div>
-                  <div>11. Suggestions / Feedback</div>
-                  <div>12. Contact Consent</div>
+                  <div>2. What Matters Most</div>
+                  <div>3. Full Name</div>
+                  <div>4. Email</div>
+                  <div>5. Phone Number</div>
+                  <div>6. Contact Consent</div>
                 </div>
               </div>
             </div>
@@ -284,23 +265,19 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
 
               {localSubmissions.length === 0 ? (
                 <div className="p-8 text-center text-stone-400 bg-stone-50 rounded-xl border border-dashed border-stone-200">
-                  No responses recorded on this device yet. Completed survey submissions will appear here.
+                  No responses recorded on this device yet. Completed poll submissions will appear here.
                 </div>
               ) : (
                 <div className="space-y-2 max-h-72 overflow-y-auto">
                   {localSubmissions.map((rec) => (
                     <div key={rec.id} className="p-3 rounded-xl border border-stone-200 bg-stone-50/50 space-y-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-semibold text-stone-900">{rec.fullName}</span>
+                        <span className="font-semibold text-stone-900">{rec.fullName || 'Anonymous'}</span>
                         <span className="text-stone-400 font-mono text-[10px]">{rec.submissionDate}</span>
                       </div>
-                      <div className="text-stone-600 flex items-center gap-2">
-                        <span>{rec.email}</span>
-                        <span>·</span>
-                        <span>{rec.phoneNumber}</span>
-                      </div>
                       <div className="text-stone-500 text-[11px] pt-1">
-                        Journey: <span className="text-stone-700 font-medium">{rec.churchJourney}</span>
+                        What matters most:{' '}
+                        <span className="text-stone-700 font-medium">{rec.whatMattersMost || '—'}</span>
                       </div>
                     </div>
                   ))}
