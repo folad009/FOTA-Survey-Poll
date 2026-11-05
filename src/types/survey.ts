@@ -9,6 +9,7 @@ export interface SurveyAnswers {
   /** Single tap: what matters most when choosing a church */
   whatMattersMost: string;
   otherText: string;
+  ageGroup: string;
 }
 
 export interface SurveyState {
@@ -25,6 +26,7 @@ export interface SubmissionRecord {
   email: string;
   phoneNumber: string;
   whatMattersMost: string;
+  ageGroup: string;
   contactConsent: string;
   syncStatus: 'synced' | 'pending' | 'offline_saved';
 }

@@ -36,7 +36,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
           <span aria-hidden="true" className="text-stone-300">·</span>
           <span>1 question</span>
           <span aria-hidden="true" className="text-stone-300">·</span>
-          <span>Anonymous</span>
+          <span>Name & age</span>
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({
         <div className="p-4 rounded-2xl bg-white border border-stone-200/80 shadow-xs">
           <h2 className="text-sm font-semibold text-stone-900 mb-1">Fast & Private</h2>
           <p className="text-xs text-stone-600 leading-relaxed">
-            No contact form required. Your answer is recorded securely in the church Google Sheet.
+            Add your name and age group, then one tap. Your answer is recorded in the church Google Sheet.
           </p>
         </div>
       </div>

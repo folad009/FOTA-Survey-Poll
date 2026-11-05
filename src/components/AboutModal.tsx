@@ -63,7 +63,7 @@ export const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
           <div className="p-3 rounded-xl bg-amber-50/60 border border-amber-200/60 text-amber-900 flex items-start gap-2.5">
             <ShieldCheck className="w-4 h-4 text-amber-700 shrink-0 mt-0.5" />
             <p className="text-[11px] leading-relaxed">
-              This poll is anonymous by default. No contact form is required to submit your answer.
+              We ask for your name and age group so responses can be understood by generation. Email and phone are not required.
             </p>
           </div>
         </div>

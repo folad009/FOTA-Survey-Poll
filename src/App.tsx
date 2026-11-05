@@ -21,6 +21,7 @@ const INITIAL_CONTACT: ContactInfo = {
 const INITIAL_ANSWERS: SurveyAnswers = {
   whatMattersMost: '',
   otherText: '',
+  ageGroup: '',
 };
 
 export default function App() {
@@ -66,6 +67,7 @@ export default function App() {
           setAnswers({
             whatMattersMost: parsed.answers.whatMattersMost || '',
             otherText: parsed.answers.otherText || '',
+            ageGroup: parsed.answers.ageGroup || '',
           });
         }
         setCurrentStep('poll');
@@ -131,6 +133,14 @@ export default function App() {
         {currentStep === 'poll' && (
           <QuestionCard
             question={POLL_QUESTION}
+            fullName={contact.fullName}
+            onFullNameChange={(name) =>
+              setContact((prev) => ({ ...prev, fullName: name }))
+            }
+            ageGroup={answers.ageGroup}
+            onAgeGroupChange={(age) =>
+              setAnswers((prev) => ({ ...prev, ageGroup: age }))
+            }
             value={answers.whatMattersMost}
             otherText={answers.otherText}
             onChange={(val) => setAnswers(

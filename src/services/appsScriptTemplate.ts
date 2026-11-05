@@ -19,8 +19,9 @@ var SHEET_NAME = "Responses";
 
 var HEADERS = [
   "Submission Date",
-  "What Matters Most",
   "Full Name",
+  "Age Group",
+  "What Matters Most",
   "Email",
   "Phone Number",
   "Contact Consent"
@@ -71,16 +72,18 @@ function doPost(e) {
     }
     
     var submissionDate = payload["Submission Date"] || new Date().toISOString();
+    var fullName = payload["Full Name"] || "";
+    var ageGroup = payload["Age Group"] || "";
     var whatMattersMost = payload["What Matters Most"] || "";
-    var fullName = payload["Full Name"] || "Anonymous";
     var email = payload["Email"] || "";
     var phoneNumber = payload["Phone Number"] || "";
     var contactConsent = payload["Contact Consent"] || "No";
     
     var newRow = [
       submissionDate,
-      whatMattersMost,
       fullName,
+      ageGroup,
+      whatMattersMost,
       email,
       phoneNumber,
       contactConsent

@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Check, AlertCircle, Loader2 } from 'lucide-react';
-import { QuestionConfig } from '../data/surveyQuestions';
+import { AGE_GROUPS, QuestionConfig } from '../data/surveyQuestions';
 
 interface QuestionCardProps {
   question: QuestionConfig;
+  fullName: string;
+  onFullNameChange: (name: string) => void;
+  ageGroup: string;
+  onAgeGroupChange: (age: string) => void;
   value: string;
   otherText: string;
   onChange: (val: string) => void;
@@ -16,6 +20,10 @@ interface QuestionCardProps {
 
 export const QuestionCard: React.FC<QuestionCardProps> = ({
   question,
+  fullName,
+  onFullNameChange,
+  ageGroup,
+  onAgeGroupChange,
   value,
   otherText,
   onChange,
@@ -28,15 +36,17 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   const [showError, setShowError] = useState(false);
   const isOtherSelected = value === 'Other';
 
-  const isAnswered = (): boolean => {
-    if (!question.required) return true;
-    if (!value.trim()) return false;
-    if (isOtherSelected) return otherText.trim().length > 0;
-    return true;
+  const missingFields = (): string[] => {
+    const missing: string[] = [];
+    if (!fullName.trim()) missing.push('your name');
+    if (!ageGroup.trim()) missing.push('an age group');
+    if (question.required && !value.trim()) missing.push('an option');
+    if (isOtherSelected && !otherText.trim()) missing.push('your answer for Other');
+    return missing;
   };
 
   const handleSubmitClick = () => {
-    if (isAnswered()) {
+    if (missingFields().length === 0) {
       setShowError(false);
       onSubmit();
     } else {
@@ -68,6 +78,54 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             {question.subtitle}
           </p>
         )}
+      </div>
+
+      <div className="mb-6 space-y-4">
+        <div>
+          <label htmlFor="respondent-name" className="block text-xs font-medium text-stone-700 mb-1.5">
+            Your name
+          </label>
+          <input
+            id="respondent-name"
+            type="text"
+            value={fullName}
+            onChange={(e) => {
+              setShowError(false);
+              onFullNameChange(e.target.value);
+            }}
+            placeholder="First and last name"
+            disabled={isSubmitting}
+            autoComplete="name"
+            className="w-full h-11 px-3 text-sm rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-amber-600 focus:ring-2 focus:ring-amber-100 transition-colors disabled:opacity-50"
+          />
+        </div>
+
+        <div>
+          <p className="text-xs font-medium text-stone-700 mb-1.5">Age group</p>
+          <div className="flex flex-wrap gap-2">
+            {AGE_GROUPS.map((group) => {
+              const isSelected = ageGroup === group.label;
+              return (
+                <button
+                  key={group.id}
+                  type="button"
+                  onClick={() => {
+                    setShowError(false);
+                    onAgeGroupChange(group.label);
+                  }}
+                  disabled={isSubmitting}
+                  className={`h-9 px-3 rounded-full border text-xs font-medium transition-colors ${
+                    isSelected
+                      ? 'border-amber-600 bg-amber-50 text-amber-900 ring-1 ring-amber-600'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50'
+                  }`}
+                >
+                  {group.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <div className="space-y-2.5">
@@ -132,11 +190,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
       {showError && (
         <div className="mt-4 p-3 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-          <span>
-            {isOtherSelected
-              ? 'Please type your answer for Other before submitting.'
-              : 'Please select an option before submitting.'}
-          </span>
+          <span>Please add {missingFields().join(', ')} before submitting.</span>
         </div>
       )}
 
