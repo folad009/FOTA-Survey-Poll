@@ -87,6 +87,7 @@ export function recordSubmittedHash(email: string): void {
 export interface GoogleSheetsPayload {
   'Submission Date': string;
   'Full Name': string;
+  Gender: string;
   'Age Group': string;
   'What Matters Most': string;
   Email: string;
@@ -119,6 +120,7 @@ export function buildSheetsPayload(
   return {
     'Submission Date': dateFormatted,
     'Full Name': contact.fullName.trim(),
+    Gender: answers.gender || 'Not specified',
     'Age Group': answers.ageGroup || 'Not specified',
     'What Matters Most': whatMattersMost,
     Email: contact.email.trim() || '',
@@ -152,6 +154,7 @@ export async function submitToGoogleSheets(
     email: payload.Email,
     phoneNumber: payload['Phone Number'],
     whatMattersMost: payload['What Matters Most'],
+    gender: payload.Gender,
     ageGroup: payload['Age Group'],
     contactConsent: payload['Contact Consent'],
     syncStatus: 'pending',

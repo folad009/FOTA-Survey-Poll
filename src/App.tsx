@@ -21,6 +21,7 @@ const INITIAL_CONTACT: ContactInfo = {
 const INITIAL_ANSWERS: SurveyAnswers = {
   whatMattersMost: '',
   otherText: '',
+  gender: '',
   ageGroup: '',
 };
 
@@ -67,6 +68,7 @@ export default function App() {
           setAnswers({
             whatMattersMost: parsed.answers.whatMattersMost || '',
             otherText: parsed.answers.otherText || '',
+            gender: parsed.answers.gender || '',
             ageGroup: parsed.answers.ageGroup || '',
           });
         }
@@ -136,6 +138,10 @@ export default function App() {
             fullName={contact.fullName}
             onFullNameChange={(name) =>
               setContact((prev) => ({ ...prev, fullName: name }))
+            }
+            gender={answers.gender}
+            onGenderChange={(gender) =>
+              setAnswers((prev) => ({ ...prev, gender }))
             }
             ageGroup={answers.ageGroup}
             onAgeGroupChange={(age) =>

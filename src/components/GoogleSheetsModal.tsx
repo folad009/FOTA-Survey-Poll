@@ -43,6 +43,7 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
     const headers = [
       "Submission Date",
       "Full Name",
+      "Gender",
       "Age Group",
       "What Matters Most",
       "Email",
@@ -55,6 +56,7 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
     const rows = localSubmissions.map(s => [
       escapeCsv(s.submissionDate),
       escapeCsv(s.fullName),
+      escapeCsv(s.gender),
       escapeCsv(s.ageGroup),
       escapeCsv(s.whatMattersMost),
       escapeCsv(s.email),
@@ -198,16 +200,17 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
 
               <div className="pt-2">
                 <span className="font-semibold text-stone-700 uppercase tracking-wider text-[11px] block mb-2">
-                  Mapped Fields in Responses Sheet (7 Columns):
+                  Mapped Fields in Responses Sheet (8 Columns):
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 p-3 rounded-xl bg-stone-50 border border-stone-200 text-[11px] font-mono text-stone-700">
                   <div>1. Submission Date</div>
                   <div>2. Full Name</div>
-                  <div>3. Age Group</div>
-                  <div>4. What Matters Most</div>
-                  <div>5. Email</div>
-                  <div>6. Phone Number</div>
-                  <div>7. Contact Consent</div>
+                  <div>3. Gender</div>
+                  <div>4. Age Group</div>
+                  <div>5. What Matters Most</div>
+                  <div>6. Email</div>
+                  <div>7. Phone Number</div>
+                  <div>8. Contact Consent</div>
                 </div>
               </div>
             </div>
@@ -279,6 +282,9 @@ export const GoogleSheetsModal: React.FC<GoogleSheetsModalProps> = ({ isOpen, on
                         <span className="text-stone-400 font-mono text-[10px]">{rec.submissionDate}</span>
                       </div>
                       <div className="text-stone-500 text-[11px] pt-1">
+                        Gender:{' '}
+                        <span className="text-stone-700 font-medium">{rec.gender || '—'}</span>
+                        {' · '}
                         Age group:{' '}
                         <span className="text-stone-700 font-medium">{rec.ageGroup || '—'}</span>
                         {' · '}

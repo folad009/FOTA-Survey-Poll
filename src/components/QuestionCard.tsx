@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Check, AlertCircle, Loader2 } from 'lucide-react';
-import { AGE_GROUPS, QuestionConfig } from '../data/surveyQuestions';
+import { AGE_GROUPS, GENDERS, QuestionConfig } from '../data/surveyQuestions';
 
 interface QuestionCardProps {
   question: QuestionConfig;
   fullName: string;
   onFullNameChange: (name: string) => void;
+  gender: string;
+  onGenderChange: (gender: string) => void;
   ageGroup: string;
   onAgeGroupChange: (age: string) => void;
   value: string;
@@ -22,6 +24,8 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   question,
   fullName,
   onFullNameChange,
+  gender,
+  onGenderChange,
   ageGroup,
   onAgeGroupChange,
   value,
@@ -39,6 +43,7 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
   const missingFields = (): string[] => {
     const missing: string[] = [];
     if (!fullName.trim()) missing.push('your name');
+    if (!gender.trim()) missing.push('a gender');
     if (!ageGroup.trim()) missing.push('an age group');
     if (question.required && !value.trim()) missing.push('an option');
     if (isOtherSelected && !otherText.trim()) missing.push('your answer for Other');
@@ -98,6 +103,33 @@ export const QuestionCard: React.FC<QuestionCardProps> = ({
             autoComplete="name"
             className="w-full h-11 px-3 text-sm rounded-xl border border-stone-300 bg-white text-stone-900 placeholder:text-stone-400 focus:outline-none focus:border-amber-600 focus:ring-2 focus:ring-amber-100 transition-colors disabled:opacity-50"
           />
+        </div>
+
+        <div>
+          <p className="text-xs font-medium text-stone-700 mb-1.5">Gender</p>
+          <div className="flex flex-wrap gap-2">
+            {GENDERS.map((option) => {
+              const isSelected = gender === option.label;
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => {
+                    setShowError(false);
+                    onGenderChange(option.label);
+                  }}
+                  disabled={isSubmitting}
+                  className={`h-9 px-3 rounded-full border text-xs font-medium transition-colors ${
+                    isSelected
+                      ? 'border-amber-600 bg-amber-50 text-amber-900 ring-1 ring-amber-600'
+                      : 'border-stone-200 bg-white text-stone-700 hover:border-stone-300 hover:bg-stone-50'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         <div>

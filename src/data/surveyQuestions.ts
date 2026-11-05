@@ -15,6 +15,12 @@ export const SURVEY_METADATA = {
   totalQuestions: 1,
 };
 
+export const GENDERS: { id: string; label: string }[] = [
+  { id: "female", label: "Female" },
+  { id: "male", label: "Male" },
+  { id: "prefer_not", label: "Prefer not to say" },
+];
+
 export const AGE_GROUPS: { id: string; label: string }[] = [
   { id: "under_18", label: "Under 18" },
   { id: "18_24", label: "18–24" },

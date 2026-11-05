@@ -20,6 +20,7 @@ var SHEET_NAME = "Responses";
 var HEADERS = [
   "Submission Date",
   "Full Name",
+  "Gender",
   "Age Group",
   "What Matters Most",
   "Email",
@@ -73,6 +74,7 @@ function doPost(e) {
     
     var submissionDate = payload["Submission Date"] || new Date().toISOString();
     var fullName = payload["Full Name"] || "";
+    var gender = payload["Gender"] || "";
     var ageGroup = payload["Age Group"] || "";
     var whatMattersMost = payload["What Matters Most"] || "";
     var email = payload["Email"] || "";
@@ -82,6 +84,7 @@ function doPost(e) {
     var newRow = [
       submissionDate,
       fullName,
+      gender,
       ageGroup,
       whatMattersMost,
       email,
